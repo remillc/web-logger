@@ -1,0 +1,28 @@
+{
+  "name": "web-logger",
+  "version": "0.0.1",
+  "description": "A tiny wrapper around morgan that simplifies web traffic loggins in Apache or custom format.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/remillc/web-logger.git"
+  },
+  "keywords": [
+    "Apache",
+    "log"
+  ],
+  "author": "Christian Rémillard <christian.remillard@gmail.com>",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/remillc/web-logger/issues"
+  },
+  "homepage": "https://github.com/remillc/web-logger#readme",
+  "dependencies": {
+    "file-stream-rotator": "0.0.6",
+    "moment": "^2.10.5",
+    "morgan": "^1.6.1"
+  }
+}
