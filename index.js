@@ -40,4 +40,4 @@ module.exports = function(format, options){
 			return req.headers['user-agent'] && req.headers['user-agent'].indexOf('nagios-plugins') > -1 && req.headers['x-forwarded-for'] && req.headers['x-forwarded-for'].indexOf('10.') == 0;
 		}
 	})
-});
+};
