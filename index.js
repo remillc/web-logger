@@ -39,11 +39,14 @@ module.exports = function(format, options){
 		return moment().format('DD/MMM/YYYY:HH:mm:ss ZZ');
 	});
 
-	return morgan('combined', {
-		stream: accessLogStream,
-		skip: function (req, res){
-			//Don't log Nagios requests
-			return req.headers['user-agent'] && req.headers['user-agent'].indexOf('nagios-plugins') > -1 && req.headers['x-forwarded-for'] && req.headers['x-forwarded-for'].indexOf('10.') == 0;
-		}
-	})
+	return function(req, res, next){
+			morgan('combined', {
+				stream: accessLogStream,
+				skip: function (req, res){
+					//Don't log Nagios requests
+					return req.headers['user-agent'] && req.headers['user-agent'].indexOf('nagios-plugins') > -1 && req.headers['x-forwarded-for'] && req.headers['x-forwarded-for'].indexOf('10.') == 0;
+			}
+			next();
+		});
+	};
 };
