@@ -4,35 +4,41 @@ var FileStreamRotator 	= require('file-stream-rotator'),
 	fs 						= require('fs'),
 	morgan 					= require('morgan'),
 	moment					= require('moment'),
+	extend					= require('extend');
 
-	logDirectory = process.cwd() + '/logs';
-
-// ensure log directory exists
-fs.existsSync(logDirectory) || fs.mkdirSync(logDirectory)
-
-// create a rotating write stream
-var accessLogStream = FileStreamRotator.getStream({
-  filename: logDirectory + '/access-%DATE%.log',
-  frequency: 'daily',
-  verbose: false,
-  date_format: "YYYY-MM-DD"
-});
-
-morgan.token('remote-addr', function(req, res){
-	return req.headers['x-forwarded-for'] 
-		|| req.ip
-		|| req._remoteAddress
-		|| (req.connection && req.connection.remoteAddress)
-		|| undefined;
-});
-
-morgan.token('date', function(req, res){
-	// %d/%b/%Y:%H:%M:%S %z
-	return moment().format('DD/MMM/YYYY:HH:mm:ss ZZ');
-});
+	defaults					= {
+		logDirectory: __dirname + '/logs'
+	};
 
 // setup the logger
 module.exports = function(format, options){
+
+	options = extend(true, (options || {}), defaults);
+
+	// ensure log directory exists
+	fs.existsSync(options.logDirectory) || fs.mkdirSync(options.logDirectory)
+
+	// create a rotating write stream
+	var accessLogStream = FileStreamRotator.getStream({
+	  filename: options.logDirectory + '/access-%DATE%.log',
+	  frequency: 'daily',
+	  verbose: false,
+	  date_format: "YYYY-MM-DD"
+	});
+
+	morgan.token('remote-addr', function(req, res){
+		return req.headers['x-forwarded-for']
+			|| req.ip
+			|| req._remoteAddress
+			|| (req.connection && req.connection.remoteAddress)
+			|| undefined;
+	});
+
+	morgan.token('date', function(req, res){
+		// %d/%b/%Y:%H:%M:%S %z
+		return moment().format('DD/MMM/YYYY:HH:mm:ss ZZ');
+	});
+
 	return morgan('combined', {
 		stream: accessLogStream,
 		skip: function (req, res){

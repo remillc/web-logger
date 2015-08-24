@@ -21,6 +21,7 @@
   },
   "homepage": "https://github.com/remillc/web-logger#readme",
   "dependencies": {
+    "extend": "^3.0.0",
     "file-stream-rotator": "0.0.6",
     "moment": "^2.10.5",
     "morgan": "^1.6.1"
