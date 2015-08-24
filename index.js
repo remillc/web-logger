@@ -4,7 +4,7 @@ var FileStreamRotator 	= require('file-stream-rotator'),
 	fs 						= require('fs'),
 	morgan 					= require('morgan'),
 	moment					= require('moment'),
-	extend					= require('extend');
+	extend					= require('extend'),
 
 	defaults					= {
 		logDirectory: __dirname + '/logs'
