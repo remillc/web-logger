@@ -7,7 +7,7 @@ var FileStreamRotator 	= require('file-stream-rotator'),
 	extend					= require('extend'),
 
 	defaults					= {
-		logDirectory: __dirname + '/logs'
+		logDirectory: './logs'
 	};
 
 // setup the logger
