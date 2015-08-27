@@ -8,11 +8,12 @@ var FileStreamRotator = require('file-stream-rotator'),
 	extend = require('extend'),
 
 	defaults = {
+		format: 'combined',
 		logDirectory: './logs'
 	};
 
 // setup the logger
-module.exports = function(format, options) {
+module.exports = function(options) {
 
 	options = extend(true, (options || {}), defaults);
 
@@ -37,7 +38,7 @@ module.exports = function(format, options) {
 	});
 
 	return function(req, res, next) {
-		morgan('combined', {
+		morgan(options.format, {
 			stream: accessLogStream,
 			skip: function(req, res) {
 				//Don't log Nagios requests
