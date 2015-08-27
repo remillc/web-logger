@@ -15,14 +15,21 @@ var FileStreamRotator = require('file-stream-rotator'),
 // setup the logger
 module.exports = function(options) {
 
-	options = extend(true, (options || {}), defaults);
+	var settings = options;
+	if (typeof options === 'string'){
+		settings = {
+			format: options
+		}
+	}
+
+	settings = extend(true, defaults, settings);
 
 	// ensure log directory exists
-	fs.existsSync(options.logDirectory) || fs.mkdirSync(options.logDirectory)
+	fs.existsSync(settings.logDirectory) || fs.mkdirSync(settings.logDirectory)
 
 	// create a rotating write stream
 	var accessLogStream = FileStreamRotator.getStream({
-		filename: options.logDirectory + '/access-%DATE%.log',
+		filename: settings.logDirectory + '/access-%DATE%.log',
 		frequency: 'daily',
 		verbose: false,
 		date_format: "YYYY-MM-DD"
@@ -38,7 +45,7 @@ module.exports = function(options) {
 	});
 
 	return function(req, res, next) {
-		morgan(options.format, {
+		morgan(settings.format, {
 			stream: accessLogStream,
 			skip: function(req, res) {
 				//Don't log Nagios requests
