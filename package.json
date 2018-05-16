@@ -1,29 +1,29 @@
 {
-  "name": "web-logger",
-  "version": "0.0.1",
-  "description": "A tiny wrapper around morgan that simplifies web traffic loggins in Apache or custom format.",
-  "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/remillc/web-logger.git"
-  },
-  "keywords": [
-    "Apache",
-    "log"
-  ],
-  "author": "Christian Rémillard <christian.remillard@gmail.com>",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/remillc/web-logger/issues"
-  },
-  "homepage": "https://github.com/remillc/web-logger#readme",
-  "dependencies": {
-    "extend": "^3.0.1",
-    "file-stream-rotator": "^0.2.1",
-    "moment": "^2.22.1",
-    "morgan": "^1.9.0"
-  }
+	"name": "web-logger",
+	"version": "0.0.2",
+	"description": "A tiny wrapper around morgan that simplifies web traffic loggins in Apache or custom format.",
+	"main": "index.js",
+	"scripts": {
+		"test": "echo \"Error: no test specified\" && exit 1"
+	},
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/remillc/web-logger.git"
+	},
+	"keywords": [
+		"Apache",
+		"log"
+	],
+	"author": "Christian Rémillard <christian.remillard@gmail.com>",
+	"license": "ISC",
+	"bugs": {
+		"url": "https://github.com/remillc/web-logger/issues"
+	},
+	"homepage": "https://github.com/remillc/web-logger#readme",
+	"dependencies": {
+		"extend": "^3.0.1",
+		"file-stream-rotator": "^0.2.1",
+		"moment": "^2.22.1",
+		"morgan": "^1.9.0"
+	}
 }
