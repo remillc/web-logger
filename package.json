@@ -1,6 +1,6 @@
 {
-	"name": "web-logger",
-	"version": "0.0.2",
+	"name": "@remillc/web-logger",
+	"version": "0.0.3",
 	"description": "A tiny wrapper around morgan that simplifies web traffic loggins in Apache or custom format.",
 	"main": "index.js",
 	"scripts": {
@@ -21,9 +21,9 @@
 	},
 	"homepage": "https://github.com/remillc/web-logger#readme",
 	"dependencies": {
-		"extend": "^3.0.1",
+		"extend": "^3.0.2",
 		"file-stream-rotator": "^0.2.1",
-		"moment": "^2.22.1",
-		"morgan": "^1.9.0"
+		"moment": "^2.24.0",
+		"morgan": "^1.9.1"
 	}
 }
