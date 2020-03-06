@@ -12,7 +12,9 @@
 	},
 	"keywords": [
 		"Apache",
-		"log"
+		"log",
+		"express",
+		"morgan"
 	],
 	"author": "Christian Rémillard <christian.remillard@gmail.com>",
 	"license": "ISC",
